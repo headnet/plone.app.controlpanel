@@ -50,6 +50,14 @@ class IBaseSearchSchema(Interface):
             vocabulary="plone.app.vocabularies.ReallyUserFriendlyTypes")
         )
 
+    sort_on = Choice(
+        title=_(u'label_sort_on', default=u'Sort on'),
+        description=_(u"Sort the default search on this index"),
+        vocabulary='plone.app.vocabularies.SearchIndexes',
+        default=u'relevance',
+        required=True
+    )
+
 
 class ISearchSchema(IBaseSearchSchema):
     ''' Base search form options '''
@@ -96,6 +104,14 @@ class SearchControlPanelAdapter(SchemaAdapterBase):
     # This also defines the user friendly types
     types_not_searched = property(get_types_not_searched,
                                   set_types_not_searched)
+
+    @property
+    def sort_on(self):
+        return self.context.sort_on
+
+    @sort_on.setter
+    def sort_on(self, value):
+        self.context._updateProperty('sort_on', value)
 
 
 searchset = FormFieldsets(IBaseSearchSchema)

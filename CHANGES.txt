@@ -4,7 +4,8 @@ Changelog
 2.3.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Added options to change default search order.
+  [rodfersou]
 
 
 2.3.9 (2015-09-27)
