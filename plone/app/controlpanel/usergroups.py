@@ -24,7 +24,10 @@ from Products.CMFPlone.utils import normalizeString
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
-from Products.PluggableAuthService.interfaces.plugins import IRolesPlugin
+from Products.PluggableAuthService.interfaces.plugins import (
+    IGroupsPlugin
+    IRolesPlugin
+)
 
 from form import ControlPanelForm, ControlPanelView
 from security import ISecuritySchema
