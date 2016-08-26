@@ -25,7 +25,7 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from Products.PluggableAuthService.interfaces.plugins import (
-    IGroupsPlugin
+    IGroupsPlugin,
     IRolesPlugin
 )
 
