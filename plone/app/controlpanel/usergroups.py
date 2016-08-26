@@ -699,16 +699,7 @@ class GroupMembershipControlPanel(UsersGroupsControlPanelView):
                 members = self.getPotentialMembers(self.searchString)
                 acl = getToolByName(self, 'acl_users')
                 plugins = acl.plugins.listPlugins(IGroupsPlugin)
-                results = self.searchResults = []
-                for member in members:
-                    for gid, plugin in plugins:
-                        groups = plugin.getGroupsForPrincipal(
-                            member,
-                            self.request
-                        )
-                        if self.groupname in groups:
-                            results.append(member)
-                            break
+                results = self.searchResults = filter(None, members)
 
             if search:
                 self.newSearch = True
