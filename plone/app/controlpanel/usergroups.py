@@ -666,6 +666,10 @@ class GroupMembershipControlPanel(UsersGroupsControlPanelView):
         self.searchString = ''
         self.newSearch = False
 
+        self.findAll = findAll = \
+            form.get('form.button.FindAll', None) is not None and \
+            not self.many_users
+
         if submitted:
             # add/delete before we search so we don't show stale results
             toAdd = form.get('add', [])
@@ -686,8 +690,6 @@ class GroupMembershipControlPanel(UsersGroupsControlPanelView):
             search = form.get('form.button.Search', None) is not None
             edit = form.get('form.button.Edit', None) is not None and toDelete
             add = form.get('form.button.Add', None) is not None and toAdd
-            findAll = form.get('form.button.FindAll', None) is not None and \
-                not self.many_users
             # The search string should be cleared when one of the
             # non-search buttons has been clicked.
             if findAll or edit or add:
@@ -708,7 +710,7 @@ class GroupMembershipControlPanel(UsersGroupsControlPanelView):
                             results.append(member)
                             break
 
-            if search or findAll:
+            if search:
                 self.newSearch = True
 
         self.groupMembers = self.getMembers()

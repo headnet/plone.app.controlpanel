@@ -12,7 +12,7 @@
      tal:define="template_id string:@@usergroup-groupmembership;
                  errors python:request.get('errors', {});
                  portal_roles view/portal_roles;
-                 showAll python:request.get('showAll', '') and not view.newSearch and 'y';
+                 showAll python: view.findAll and not view.newSearch;
                  Batch python:modules['Products.CMFPlone'].Batch;
                  resultcount python:len(view.searchResults);
                  b_size python:resultcount if showAll else 20;
